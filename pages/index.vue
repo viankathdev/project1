@@ -1,21 +1,18 @@
 <template>
   <v-row>
     <v-col>
-      <div class="logo text-center">
+      <div class="logo text-center mb-10">
         <NuxtLogo />
         <VuetifyLogo />
       </div>
-      <br><br>
       <div class="text-center">
         <h2>Welcome to the Vuetify + Nuxt.js task</h2>
         <p>Vuetify is a progressive Material Design component framework for Vue.js. It was designed to empower developers to create amazing applications.</p>
       </div>
-      <br>
-      <br>
-      <v-row>
+      <v-row class="mt-10">
         <v-col cols="12" sm="4">
           <v-card
-            class="mx-auto"
+            class="mx-auto pa-3"
             max-width="344"
           >
             <v-card-text>
@@ -29,13 +26,13 @@
               </div>
             </v-card-text>
             <v-card-actions>
-              <NuxtLink class="ma-2" color="success" to="/task-one">View</NuxtLink>
+              <NuxtLink class="v-btn v-btn--outlined v-size--default indigo--text" color="success" to="/task-one">View</NuxtLink>
             </v-card-actions>
           </v-card>
         </v-col>
         <v-col cols="12" sm="4">
           <v-card
-            class="mx-auto"
+            class="mx-auto pa-3"
             max-width="344"
           >
             <v-card-text>
@@ -49,13 +46,13 @@
               </div>
             </v-card-text>
             <v-card-actions>
-              <NuxtLink to="/task-two">View</NuxtLink>
+              <NuxtLink class="v-btn v-btn--outlined v-size--default indigo--text" to="/task-two">View</NuxtLink>
             </v-card-actions>
           </v-card>
         </v-col>
         <v-col cols="12" sm="4">
           <v-card
-            class="mx-auto"
+            class="mx-auto pa-3"
             max-width="344"
           >
             <v-card-text>
@@ -69,7 +66,7 @@
               </div>
             </v-card-text>
             <v-card-actions>
-              <NuxtLink to="/task-three">View</NuxtLink>
+              <NuxtLink class="v-btn v-btn--outlined v-size--default indigo--text" to="/task-three">View</NuxtLink>
             </v-card-actions>
           </v-card>
         </v-col>

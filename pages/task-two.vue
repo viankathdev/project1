@@ -6,10 +6,9 @@
             alt="Vuetify.js"
             class="mb-5"
         >
-        <h2>Task #2 | Create Nuxt Vue Js Project</h2>
-        <br>
+        <h2 class="py-5">Task #2 | Create Nuxt Vue Js Project</h2>
         <p>When you run npx create-nuxt-app project1 in CLI, please select these options:</p>
-        <ul>
+        <ul class="mb-5">
             <li>Programming languages - <b>JS</b></li>
             <li>Package manager: <b>NPM</b></li>
             <li>UI Framework: <b>Vuetify</b></li>
