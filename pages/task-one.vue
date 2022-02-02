@@ -6,15 +6,13 @@
         alt="Vuetify.js"
         class="mb-5"
       >
-      <h2>Task #1 | Create Github Account</h2>
-      <br>
-      <ul>
+      <h2 class="py-5">Task #1 | Create Github Account</h2>
+      <ul class="mb-5">
         <li>Create Github using your vian@nathanhr.com account. </li>
         <li>Install github desktop or any git tools you prefer </li>
         <li>Add your vian@nathanhr.com github login account in your local machine. </li>
         <li>https://github.com/ </li>
     </ul> 
-    <br>
     <v-btn
         class="ma-2"
         outlined
