@@ -11,6 +11,7 @@
         <p>Create 5 pages under the page folder. See pages below. </p>
         <ul>
             <li><NuxtLink to="/">Home</NuxtLink></li>
+            <li><NuxtLink to="/task">Tasks</NuxtLink></li>
             <li><NuxtLink to="/task-one">Task One</NuxtLink></li>
             <li><NuxtLink to="/task-two">Task Two</NuxtLink></li>
             <li><NuxtLink to="/task-three">Task Three</NuxtLink></li>
