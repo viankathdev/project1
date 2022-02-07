@@ -5,17 +5,12 @@
       width="600"
     >
       <template v-slot:activator="{ on, attrs }">
-          <v-btn
-            class="ma-1"
-            outlined
-            fab
-            x-small
+          <v-icon 
+            small 
+            class="mr-2" 
             color="blue lighten-1"
             v-bind="attrs"
-            v-on="on"
-          >
-            <v-icon>mdi-eye</v-icon>
-          </v-btn>
+            v-on="on">mdi-eye</v-icon>
       </template>
       <v-card>
         <div class="pa-4 d-flex flex-no-wrap justify-space-between align-center">
