@@ -1,76 +1,19 @@
 <template>
-  <v-row>
-    <v-col>
-      <div class="logo text-center mb-10">
-        <NuxtLogo />
-        <VuetifyLogo />
-      </div>
+  <v-row class="home-row">
+    <v-col class="mt-16 pt-10">
       <div class="text-center">
-        <h2>Welcome to the Vuetify + Nuxt.js task</h2>
-        <p>Vuetify is a progressive Material Design component framework for Vue.js. It was designed to empower developers to create amazing applications.</p>
+        <h1 class="h1-home mb-4">Organize it all <br> with Task Track</h1>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit</p>
+         <v-btn
+            class="ma-5"
+            outlined
+            color="red"
+            nuxt
+            to="/tasks"
+          >
+          Get Started
+          </v-btn>
       </div>
-      <v-row class="mt-10">
-        <v-col cols="12" sm="4">
-          <v-card
-            class="mx-auto pa-3"
-            max-width="344"
-          >
-            <v-card-text>
-              <div>Task #1</div>
-              <p class="text-h4 text--primary">
-                Create Github Account
-              </p>
-              <div class="text--primary">
-                Lorem ipsum dolor sit amet consectetur elit<br>
-                Minus quaerat temporibus pariatur Quam eos.
-              </div>
-            </v-card-text>
-            <v-card-actions>
-              <NuxtLink class="v-btn v-btn--outlined v-size--default indigo--text" color="success" to="/task-one">View</NuxtLink>
-            </v-card-actions>
-          </v-card>
-        </v-col>
-        <v-col cols="12" sm="4">
-          <v-card
-            class="mx-auto pa-3"
-            max-width="344"
-          >
-            <v-card-text>
-              <div>Task #2</div>
-              <p class="text-h4 text--primary">
-                Create Nuxt Vue Js Project
-              </p>
-              <div class="text--primary">
-                Lorem ipsum dolor sit amet consectetur elit<br>
-                Minus quaerat temporibus pariatur Quam eos.
-              </div>
-            </v-card-text>
-            <v-card-actions>
-              <NuxtLink class="v-btn v-btn--outlined v-size--default indigo--text" to="/task-two">View</NuxtLink>
-            </v-card-actions>
-          </v-card>
-        </v-col>
-        <v-col cols="12" sm="4">
-          <v-card
-            class="mx-auto pa-3"
-            max-width="344"
-          >
-            <v-card-text>
-              <div>Task #3</div>
-              <p class="text-h4 text--primary">
-                Create Pages
-              </p>
-              <div class="text--primary">
-                Lorem ipsum dolor sit amet consectetur elit<br>
-                Minus quaerat temporibus pariatur Quam eos.
-              </div>
-            </v-card-text>
-            <v-card-actions>
-              <NuxtLink class="v-btn v-btn--outlined v-size--default indigo--text" to="/task-three">View</NuxtLink>
-            </v-card-actions>
-          </v-card>
-        </v-col>
-      </v-row>
     </v-col>
   </v-row>
 </template>
@@ -80,3 +23,17 @@ export default {
   name: 'IndexPage'
 }
 </script>
+
+<style scoped>
+  .home-row {
+    height: 90vh;
+    background: url('/taskhome-featured.png');
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: bottom;
+  }
+  .h1-home {
+    font-size: 4.5em;
+    line-height: 1.3;;
+  }
+</style>
