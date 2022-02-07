@@ -1,62 +1,45 @@
 <template>
     <div>
       <!-- Task table begin here -->
-      <v-simple-table class="elevation-2" fixed-header height="500px">
-        <template v-slot:default>
-              <thead>
-                  <tr>
-                  <th class="text-left text-h6">
-                      Tasks
-                  </th>
-                  <th class="text-left text-h6">
-                      Status
-                  </th>
-                  <th class="text-left text-h6">
-                      Action
-                  </th>
-                  </tr>
-              </thead>
-              <tbody>
-                <tr v-for="task in tasks" :key="task.id">
-                  <td>{{task.title}}</td>
-                  <td>
-                    <p v-if="task.task_status === 'Pending'" class="deep-orange--text text--lighten--1 mb-0">{{task.task_status}}</p>
-                    <p v-if="task.task_status === 'In Progress'" class="amber--text text--darken--10 mb-0">{{task.task_status}}</p>
-                    <p v-if="task.task_status === 'Completed'" class="blue--text text--lighten--1 mb-0">{{task.task_status}}</p>
-                  </td>
-                  <td class="text-left d-flex">
-                    <TaskView v-bind:task=task />
-                    <div class="del-btn">
-                      <v-btn
-                        class="ma-1"
-                        outlined
-                        fab
-                        x-small
-                        :disabled="editBtnDisable"
-                        color="green lighten-1"
-                        @click="onUpdateTask(task)"
-                      >
-                        <v-icon>mdi-pencil</v-icon>
-                      </v-btn>
-                    </div>
-                    <div class="del-btn">
-                      <v-btn
-                        class="ma-1"
-                        outlined
-                        fab
-                        x-small
-                        color="red lighten-1"
-                        @click="removeItem(task)"
-                      >
-                        <v-icon>mdi-delete-empty</v-icon>
-                      </v-btn>
-                    </div>
-                </td>
-                </tr>
-              </tbody>
-          </template>
-      </v-simple-table>
+      <v-col class="ma-0 pa-0">
+        <v-card>
+          <v-card-title>Tutorials</v-card-title>
+          <v-data-table
+            :headers="headers"
+            :items="tasks"
+            :items-per-page="5"
+          >
+            <template v-slot:item.task_status="{ item }">
+              <v-chip
+                small
+                :color="getColor(item.task_status)"
+                dark
+              >
+                {{ item.task_status }}
+              </v-chip>
+            </template>
+            <template v-slot:[`item.actions`]="{ item }" class="d-flex d-inline-flex">
+              <div class="text-left d-flex">
+                  <TaskView v-bind:task=item />
+                  <v-icon 
+                    small 
+                    class="mr-2" 
+                    :disabled="editBtnDisable"
+                    color="green lighten-1"
+                    @click="onUpdateTask(item)">mdi-pencil</v-icon>
+                  <v-icon 
+                    small 
+                    class="mr-2" 
+                    :disabled="editBtnDisable"
+                    color="red lighten-1"
+                    @click="removeItem(item)">mdi-delete</v-icon>
+                </div>
+            </template>
+          </v-data-table>
+        </v-card>
+      </v-col>
       <!-- Task table end here -->
+      
       <!-- On delete notification -->
       <v-snackbar
         v-model="snackbar"
@@ -87,7 +70,14 @@
       return {
         tasks: [],
         editBtnDisable: false,
-        snackbar: false
+        snackbar: false,
+        items: [],
+        title: "",
+        headers: [
+          { text: "Title", align: "start", sortable: true, value: "title" },
+          { text: "Status", value: "task_status", sortable: true },
+          { text: "Actions", value: "actions", sortable: false },
+        ],
       };
     },
     watch: {
@@ -101,6 +91,8 @@
         async getAllTask () {
           const response = await this.$axios.$get('/tasks');
           this.tasks = response;
+          this.items = response.map(this.getDisplayTasks);
+          console.log(response);
         },
         // Remove and delete task
         async removeItem(task) {
@@ -112,7 +104,19 @@
         onUpdateTask (task) {
           this.$emit('editTask', task)
           this.editBtnDisable = true
-        }
+        },
+        getDisplayTasks(task) {
+          return {
+            id: task.id,
+            title: task.title.length > 30 ? task.title.substr(0, 30) + "..." : task.title,
+            status: task.task_status,
+          };
+        },
+        getColor (status) {
+          if (status == 'Pending') return 'deep-orange'
+          else if (status == 'In Progress') return 'amber'
+          else return 'blue'
+        },
     },
     mounted(){
       // Initialize method to populate task table
